@@ -1,0 +1,29 @@
+#include<stdio.h>
+#include<math.h>
+
+int main()
+{
+    int m1 = 3;
+    float lamda1 = 530e-9;
+    float theta1_deg = 65.5;
+
+    int m2 = 2;
+    float lamda2 = 700e-9;
+    float theta1_rad = theta1_deg * (M_PI / 180.0);
+
+    float d = (m1 * lamda1) / sin(theta1_rad);
+    float sin_theta2 = (m2 * lamda2) / d;
+
+    if(sin_theta2 > 1.0)
+    {
+        printf("No second order maximum for red light\n");
+    }
+    else {
+        float theta2_rad = asin(sin_theta2);
+        float theta2_deg = theta2_rad * (180.0 / M_PI);
+
+        printf("The angle for the second order bright spot for red light is: %.2f degrees \n",theta2_deg);
+
+    }
+    return 0;
+}
